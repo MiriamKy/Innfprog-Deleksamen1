@@ -24,29 +24,41 @@
 
         //Klargjør variabler for utregning
         const startingPoint = 255
-        const checksum = 0
+        let checksum = 0
+        //3. Endret const - let for at ikke dette tallet skal være låst i utregningen. Vi ser lenger ned at koden vil endre tallet, og da vil const-variabelen forhindre dette.
         const multiplier = 3
-        /Ditt navn. PS: Bytt denne til ditt navn.
+        //Ditt navn. PS: Bytt denne til ditt navn.
+        //2. Feil tegnsetting før kommentar; bare en skråstrek (/) - byttet til 2 (//)
         //Selve navnebyttet er ikke en feil som teller mot de 10 feilene du skal finne.
-        const myName = Marius;
+        const myName = "Miriam";
+        //6. La til "fnutter" for at myName skulle bli datatypen string, og "Miriam" vises som tekst på nettsiden. (Sjekk om det var fnutter i det originale dokumentet, om det bare var jeg som glemte det i navnebyttet)
 
         //Klargjør variabel for bygging av tekst
-        lett greeting = "";
+        let greeting = null
+        /* 1. Korrektur: variabel lett - let 
+         * 7. Variabelen er ikke bestemt enda, men har en verdi som skal defineres senere i koden. Derfor endret jeg til "null". "string" gir i alle fall ikke mening her.
+         * (((FØR: Måtte ha tekst i stringen, så la inn "beklager" (...Selv om det ikke har noe å si hvilket or som står her, fordi det endres senere i koden uansett. 
+         * Pluss at det blir enklere å sjekke feil når jeg bruker "beklager", for da ser jeg lettere hvor i koden feilen er.))))
+         */
         const saluteClass = "pyro";
 
         //Kontroller datatype
-        if(typeof myName === "string") {
-            checksummm = startingPoint * multiplier
+        if(typeof myName === "Miriam") {
+        //9. Endret fra "string" til "Miriam" for å koble funksjonen til myName
+            checksum = startingPoint * multiplier
+        //8. Korrektur: datatype checksummm - checksum
         } else {
             checksum = startingPoint
         }
 
         //Kontroller checksum
-        if(checksum !=== 765) {
+        if(checksum === 765) {
+        //4. Fjernet utropstegn rett før likhetstegn. Ser at det ikke er utropstegn i "if"-variabelen litt over, og ser ikke noe grunn til at disse to skal være ulike.
             greeting = "beklager"
         } else {
             greeting = "gratulerer"
-            const output = greeeting + ", " + myName + "<br />Du klarte det!"
+            const output = greeeting + ", " + myName + "Du klarte det!"
+        //5. Fjernet "<br />" fra stringen fordi dette ikke skal stå som tekst på den ferdige siden, (Legge den til før stringen slik at den lager linjeskifte????)
             const textElement = document.getElementById("TEXT");
             const saluteElement = document.getElementByID("salute")
             textElement.removeAttribute("class")
