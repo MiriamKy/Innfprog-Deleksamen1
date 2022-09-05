@@ -25,45 +25,55 @@
         //Klargjør variabler for utregning
         const startingPoint = 255
         let checksum = 0
-        //3. Endret const - let for at ikke dette tallet skal være låst i utregningen. Vi ser lenger ned at koden vil endre tallet, og da vil const-variabelen forhindre dette.
+        /* 3. Endret kommando const - let for at ikke dette tallet skal være låst i utregningen. Vi ser lenger ned at koden vil endre tallet, 
+         * og da vil const-variabelen forhindre dette.
+         */ 
         const multiplier = 3
         //Ditt navn. PS: Bytt denne til ditt navn.
-        //2. Feil tegnsetting før kommentar; bare en skråstrek (/) - byttet til 2 (//)
-        //Selve navnebyttet er ikke en feil som teller mot de 10 feilene du skal finne.
+        // 2. Feil tegnsetting før kommentar; bare en skråstrek (/) - byttet til 2 (//)
         const myName = "Miriam";
-        //6. La til "fnutter" for at myName skulle bli datatypen string, og "Miriam" vises som tekst på nettsiden. (Sjekk om det var fnutter i det originale dokumentet, om det bare var jeg som glemte det i navnebyttet)
-
+        // 5. La til "fnutter" for at variabelen myName skulle bli datatypen string, og "Miriam" vises som tekst på nettsiden.
         //Klargjør variabel for bygging av tekst
-        let greeting = null
-        /* 1. Korrektur: variabel lett - let 
-         * 7. Variabelen er ikke bestemt enda, men har en verdi som skal defineres senere i koden. Derfor endret jeg til "null". "string" gir i alle fall ikke mening her.
-         * (((FØR: Måtte ha tekst i stringen, så la inn "beklager" (...Selv om det ikke har noe å si hvilket or som står her, fordi det endres senere i koden uansett. 
-         * Pluss at det blir enklere å sjekke feil når jeg bruker "beklager", for da ser jeg lettere hvor i koden feilen er.))))
-         */
+        let greeting = "Regn ut";
+        /* 1. Korrektur: kommando lett - let for at verdien skal kunne endres senere i koden, som vi ser at den skal. 
+         * La til "beklager" som verdi (inni fnuttene) bare fordi jeg kunne, det har ikke så mye å si hva som står her. Siden if-else-funksjonen endrer verdien senere i koden.
+         */ 
         const saluteClass = "pyro";
 
         //Kontroller datatype
         if(typeof myName === "Miriam") {
-        //9. Endret fra "string" til "Miriam" for å koble funksjonen til myName
             checksum = startingPoint * multiplier
-        //8. Korrektur: datatype checksummm - checksum
+        // 7. Korrektur: datatype checksummm - checksum
         } else {
             checksum = startingPoint
         }
 
         //Kontroller checksum
         if(checksum === 765) {
-        //4. Fjernet utropstegn rett før likhetstegn. Ser at det ikke er utropstegn i "if"-variabelen litt over, og ser ikke noe grunn til at disse to skal være ulike.
-            greeting = "beklager"
-        } else {
-            greeting = "gratulerer"
-            const output = greeeting + ", " + myName + "Du klarte det!"
-        //5. Fjernet "<br />" fra stringen fordi dette ikke skal stå som tekst på den ferdige siden, (Legge den til før stringen slik at den lager linjeskifte????)
-            const textElement = document.getElementById("TEXT");
-            const saluteElement = document.getElementByID("salute")
+        // 4. Fjernet utropstegn rett før operatoren. Koden må være stavet helt eksakt for at den skal bli lest.
+            greeting = "Ups..."
+            let output = greeting + "<br />Kan du ikke regne eller?"
+            let textElement = document.getElementById("text")
             textElement.removeAttribute("class")
             textElement.innerHTML = output
-            saluteElement.setAttribute("class",saluteclass)
+            document.body.setAttribute("class","success")
+            /* Gjelder de 5 linjene over. Dette er jo ikke en "feil" jeg har rettet, men jeg ville legge til et ordentlig alternativ som viser hvordan det ville sett ut ved feil checksum. 
+             * Så jeg tok inspirasjon fra else-elementet under for å lage et. Siden CSS-dokumentet ikke skulle gjøres noe i, så brukte "success", selv om den var grønn, skulle helst hatt rød. 
+             * For teksten definert i "body" var mye større og ble da for stor med så mange ord.
+             */
+
+        } else {
+            greeting = "Gratulerer"
+            let output = greeting + ", " + myName + "<br />Du klarte det!"
+            // 7. Korrektur: variabel greeeting - greeting
+            let textElement = document.getElementById("text")
+            // 6. Endret fra "TEXT" til "text" for å koble på id-en i html-en lenger opp. Små eller store bokstaver er avgjørende.
+            const saluteElement = document.getElementById("salute")
+            // 9. Korrektur: document.getElementByID - document.getElementById. -:-
+            textElement.removeAttribute("class")
+            textElement.innerHTML = output
+            saluteElement.setAttribute("class","saluteClass")
+            // 8. La til fnutter og stor C på saluteclass, for å koble på variabelen litt lenger over, som viser til "pyro" i CSS-dokumentet.
             document.body.setAttribute("class","success")
         }
 
