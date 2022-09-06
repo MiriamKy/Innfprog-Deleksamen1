@@ -25,25 +25,36 @@
         //Klargjør variabler for utregning
         const startingPoint = 255
         let checksum = 0
-        /* 3. Endret kommando const - let for at ikke dette tallet skal være låst i utregningen. Vi ser lenger ned at koden vil endre tallet, 
+        /* 3. Endret kommando const - let for at ikke denne verdien skal være låst i utregningen. Vi ser lenger ned at koden vil endre tallet (datatype number), 
          * og da vil const-variabelen forhindre dette.
          */ 
         const multiplier = 3
         //Ditt navn. PS: Bytt denne til ditt navn.
         // 2. Feil tegnsetting før kommentar; bare en skråstrek (/) - byttet til 2 (//)
+        //Selve navnebyttet er ikke en feil som teller mot de 10 feilene du skal finne.
         const myName = "Miriam";
         // 5. La til "fnutter" for at variabelen myName skulle bli datatypen string, og "Miriam" vises som tekst på nettsiden.
         //Klargjør variabel for bygging av tekst
         let greeting = "Regn ut";
-        /* 1. Korrektur: kommando lett - let for at verdien skal kunne endres senere i koden, som vi ser at den skal. 
-         * La til "beklager" som verdi (inni fnuttene) bare fordi jeg kunne, det har ikke så mye å si hva som står her. Siden if-else-funksjonen endrer verdien senere i koden.
+        /* 1. Korrektur: kommando lett - let for at koden skal kunne leses.
+         * La til "Regn ut" som verdi (inni fnuttene) bare fordi jeg kunne, det har ikke så mye å si hva som står her. Siden if-else-testen endrer verdien senere i koden.
          */ 
         const saluteClass = "pyro";
-
+        
         //Kontroller datatype
-        if(typeof myName === "Miriam") {
+        if(myName === "string") {
+        /* 11. Fjernet "typeof" fra foran variabelen, fordi den brukes til å finne hva slags datatype som skrives i gjeldende variabel. 
+         * Dette gjør at uansett hvilken verdi som står i variabelen myName, så lenge den er datatypen string, vil if = true.
+         * Følgelig blir checksum = startingpoint * multiplier = 765, og derfor vil også if = true i if-else-testen nedenfor også, og nettleseren vil derfor vise feil alternativ.
+         * Nå kan det egentlig stå hva det vil i stedet for "string" som verdi, så lenge det ikke er "Miriam", for da aktivers if i if-else-testen.
+         * (Hvis vi nå ØNSKER å vise if-alternativet i neste funksjon i nettleseren, kan vi nå bare endre "string" til "Miriam".)
+         * 
+         * (Skjønner her at hvis jeg heller hadde endret tallet i checksum i if-else-testen nedenfor ville jeg også aktivert else, og fått opp riktig innhold i nettleseren, men
+         * jeg har alltid hatt en sterk trang til å gjøre ting annerledes ;P Derfor har jeg rettet 11 feil, for ser ut som det var tenkt at feil 4: utropstegnet, og checksummen
+         * på samme sted (som jeg ikke endret) skulle til sammen være én feil??)
+         */
             checksum = startingPoint * multiplier
-        // 7. Korrektur: datatype checksummm - checksum
+        // 6. Korrektur: datatype checksummm - checksum
         } else {
             checksum = startingPoint
         }
@@ -51,29 +62,31 @@
         //Kontroller checksum
         if(checksum === 765) {
         // 4. Fjernet utropstegn rett før operatoren. Koden må være stavet helt eksakt for at den skal bli lest.
-            greeting = "Ups..."
-            let output = greeting + "<br />Kan du ikke regne eller?"
+            greeting = "ups..."
+            let output = greeting + "<br />du klarte det bare nesten!"
             let textElement = document.getElementById("text")
             textElement.removeAttribute("class")
             textElement.innerHTML = output
             document.body.setAttribute("class","success")
-            /* Gjelder de 5 linjene over. Dette er jo ikke en "feil" jeg har rettet, men jeg ville legge til et ordentlig alternativ som viser hvordan det ville sett ut ved feil checksum. 
-             * Så jeg tok inspirasjon fra else-elementet under for å lage et. Siden CSS-dokumentet ikke skulle gjøres noe i, så brukte "success", selv om den var grønn, skulle helst hatt rød. 
-             * For teksten definert i "body" var mye større og ble da for stor med så mange ord.
+            /* Gjelder de 5 linjene over. Dette er jo ikke en "feil" jeg har rettet, men jeg ville prøve meg på å lage mitt eget alternativ til hva som vises når if i denne funskjonen aktiveres. 
+             * Så jeg tok inspirasjon fra else-elementet under for å lage et. Siden CSS-dokumentet ikke skulle gjøres noe i, så brukte jeg "success", selv om den var grønn, skulle helst hatt rød. 
+             * Og teksten definert i "body" var mye større og ble da for stor med så mange ord. Så dette ble altså en del av prosessen der jeg testet meg fram 
+             * og fant ut mer om hvordan det hele henger sammen, både internt i denne filen, og sammen med CSS-filen.
              */
 
         } else {
-            greeting = "Gratulerer"
-            let output = greeting + ", " + myName + "<br />Du klarte det!"
-            // 7. Korrektur: variabel greeeting - greeting
+            greeting = "gratulerer"
+            let output = greeting + ", " + myName + "<br />du klarte det!"
+            // 8. Korrektur: variabel greeeting - greeting
             let textElement = document.getElementById("text")
-            // 6. Endret fra "TEXT" til "text" for å koble på id-en i html-en lenger opp. Små eller store bokstaver er avgjørende.
+            // 7. Endret fra "TEXT" til "text" for å koble på id-en i html-en lenger opp. Små eller store bokstaver er avgjørende for om netttleseren kobler to koder/elementer sammen.
+            // Fjernet også ; fra slutten på linja, for at det skulle se ryddigere ut, men Javascript godtar både med og uten semikolon. (Men teller ikke dette med som en feil jeg har rettet)
             const saluteElement = document.getElementById("salute")
-            // 9. Korrektur: document.getElementByID - document.getElementById. -:-
+            // 10. Korrektur: document.getElementByID - document.getElementById. -:-
             textElement.removeAttribute("class")
             textElement.innerHTML = output
-            saluteElement.setAttribute("class","saluteClass")
-            // 8. La til fnutter og stor C på saluteclass, for å koble på variabelen litt lenger over, som viser til "pyro" i CSS-dokumentet.
+            saluteElement.setAttribute("class",saluteClass)
+            // 9. La til stor C på saluteclass, for å koble på variabelen litt lenger over, som viser til "pyro" i CSS-dokumentet.
             document.body.setAttribute("class","success")
         }
 
